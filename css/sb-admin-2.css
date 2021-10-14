@@ -10906,7 +10906,8 @@ span.centrado {
 .bg-password-image {
   background: url("../img/logo.png");
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: space;
 }
 
 form.user .custom-checkbox.small label {

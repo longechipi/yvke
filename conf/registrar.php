@@ -1,5 +1,5 @@
 <?php
-//Fecha creacion 10-06-2021//
+//Fecha creacion 14-10-2021//
 //Autor: Jean Castillo//
 include('db.php');
 include('funciones.php');

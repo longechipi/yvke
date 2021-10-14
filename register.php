@@ -17,10 +17,10 @@
                             <form class="user" method="post" action="conf/registrar.php">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="cedula1" name="cedula1" placeholder="Ingresa tu Cédula" required>
+                                        <input type="number" class="form-control form-control-user" id="cedula1" name="cedula1" placeholder="Ingresa tu Cédula" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="cedula2" name="cedula2" placeholder="Confirma tu Cédula" required>
+                                        <input type="number" class="form-control form-control-user" id="cedula2" name="cedula2" placeholder="Confirma tu Cédula" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" required>
                                     </div>
                                 </div>
                                 <div class="form-group">

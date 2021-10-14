@@ -1,7 +1,4 @@
 <?php
-
-
-
 //////////// FUNCION PARA GENERAR CONTASEÑA PROVISIONAL ////////////
 function generaPass()
 {
@@ -15,7 +12,6 @@ function generaPass()
    }
    return $pass;
 }
-
 //////////// FUNCION PARA SACAR CONSOLE LOG ////////////
 function console_log($output, $with_script_tags = true)
 {
