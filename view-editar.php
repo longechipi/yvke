@@ -5,6 +5,15 @@ include('conf/db.php');
 include('conf/valida.php');
 include('conf/funciones.php');
 if (!isset($_SESSION['cedula'])) { header('location:index.html'); }
+$cedula = $_SESSION['cedula'];
+$sql = "SELECT * FROM usuariosint WHERE login ='$cedula'";
+$resul = pg_query($conU,$sql);
+while ($row = pg_fetch_assoc($resul)) {
+    $login=$row['login'];//NOMBRE DE LA PERSONA
+    $clave=$row['clave']; //CEDULA DE LA PERSONA
+    $email=$row['correo'];//FECHA DE INGRESO
+}
+
 ?>
 <?php include('marcos/header.php'); ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -12,11 +21,20 @@ if (!isset($_SESSION['cedula'])) { header('location:index.html'); }
         $(document).ready(function () {
             $("#chkRead").change(function () {
                 if ($(this).is(":checked")) {
-                    $('#email').removeAttr("readonly")
+                    $('#clave').removeAttr("readonly")
+                    
                 }
                 else {
-                    $('#txtFaisalaId').attr('readonly', true);
+                    $('#clave').attr('readonly', true);
                 }
+                if ($(this).is(":checked")) {
+                    $('#confirma').removeAttr("readonly")
+                    
+                }
+                else {
+                    $('#confirma').attr('readonly', true);
+                }
+                
             });
         });
     </script>
@@ -45,12 +63,23 @@ if (!isset($_SESSION['cedula'])) { header('location:index.html'); }
 <h6 class="m-0 font-weight-bold text-primary">Editar Perfil</h6>
 </div>
 <div class="card-body text-center">
-<p class="text-center">Por favor selecciona los campos que quieres editar en el sistema</p>
+<p class="text-center"> <strong> Hola, <?php nombre();?></strong> <br> Por favor selecciona el campo que quieres editar en el sistema </p>
+
 
 <!-- PENDIENTEEEEEE AQUIIIIIIIIIIIIIIIIII -->
 <form class="user" method="post" action="ajax/editar-user.php">
-<input id="chkRead" type="checkbox" name="chkRead" /><label for="chkRead">Test</label>
-<input name="email" type="text" readonly="readonly" id="email" value="wwwss"/>
+
+
+<div class="row"> 
+<div class="col-xl-6 col-lg-6"> 
+<input id="chkRead" type="checkbox" class="form-control form-control-user" name="chkRead" /><label for="chkRead">Editar Contraseña</label>
+<input id="cedula" type="text" style="display:none;" class="form-control form-control-user" name="cedula" readonly value ="<?php echo $login;?>"/>
+</div>
+<div class="col-xl-6 col-lg-6"> 
+<input name="clave" type="text" readonly="readonly" id="clave" class="form-control form-control-user" value="<?php echo $clave;?>"/>
+<input name="confirma" type="text" readonly="readonly" id="confirma" class="form-control form-control-user"/>
+</div>
+</div>
 <input class="btn btn-primary btn-user btn-block" type="submit" name="enviar" id="enviar" class="fadeIn fourth" value="Registrar">
 </form>
 
