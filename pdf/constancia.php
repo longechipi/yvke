@@ -208,4 +208,3 @@ $pdf->Cell(180,5,utf8_decode("Gerencia de Talento Humano Teléfono (0212)991-08-
 
 
 $pdf->Output('', 'Constancia-Laboral-'.$_SESSION['cedula'].'.pdf');
-?>
