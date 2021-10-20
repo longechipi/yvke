@@ -76,7 +76,7 @@ $pdf->Cell(0, 5, 'TRAMITACION DE VACACIONES', 0, 1,'C');
 //$pdf->Line(20, 48, 190, 48); // 20mm from each Edge
 
 $pdf->Ln(5);
-$pdf->Cell(190, 5, fechaCastellano(date("d-m-Y")), 0, 1,'R');
+$pdf->Cell(190, 5, utf8_decode(fechaCastellano(date('Ymd'))), 0, 1,'R');
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(190, 5, 'DATOS DEL TRABAJADOR', 1, 1,'C');
 $pdf->SetFont('Times','B',9);
@@ -162,4 +162,3 @@ $pdf->Cell(190, 5, 'TRIPLICADO: TRABAJADOR', 0, 1,'L');
 
 
 $pdf->Output('', 'Constancia-Laboral-'.$_SESSION['cedula'].'.pdf');
-?>

@@ -8,7 +8,7 @@ $confirma1 = pg_escape_string($_POST['confirma1']);
 $login = pg_escape_string($_POST['cedula']);
 
 if (isset($_POST['enviar2'])) {
-    if ($clave != $confirma) {
+    if ($email != $confirma1) {
         echo "<script type='text/javascript'> alert('LOS CORREOS NO SON IGUALES'); document.location=('../view-editar.php'); </script>";
     } else {
         $sql = "UPDATE usuariosint SET correo='$confirma1' WHERE login='$login'";

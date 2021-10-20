@@ -80,8 +80,8 @@ $sql2 = "SELECT sno_personalisr.codper, sno_personalisr.codisr, sno_personalisr.
    FROM sno_hsalida, sno_hconcepto, sno_hperiodo 
   WHERE sno_hsalida.codemp = '0001' 
     AND REPLACE(ltrim(REPLACE(sno_hsalida.codper,'0',' ')),' ','0')='$cedula'
-  AND sno_hperiodo.anocur = '".$ano_cur."' 
-    AND SUBSTR(cast(sno_hperiodo.fecdesper as char(10)),1,4) = '".$ano_cur."' 
+  AND sno_hperiodo.anocur = '$ano_cur' 
+    AND SUBSTR(cast(sno_hperiodo.fecdesper as char(10)),1,4) = '$ano_cur' 
     AND sno_personalisr.codisr = SUBSTR(cast(sno_hperiodo.fecdesper as char(10)),6,2) 
     AND sno_hconcepto.aplarccon = 1 
     AND (sno_hsalida.tipsal = 'A' OR sno_hsalida.tipsal = 'V1' OR sno_hsalida.tipsal = 'W1' 
@@ -103,8 +103,8 @@ $sql2 = "SELECT sno_personalisr.codper, sno_personalisr.codisr, sno_personalisr.
    FROM sno_hsalida, sno_hconcepto, sno_hperiodo 
   WHERE sno_hsalida.codemp = '0001' 
     AND REPLACE(ltrim(REPLACE(sno_hsalida.codper,'0',' ')),' ','0')='$cedula'
-    AND sno_hperiodo.anocur = '".$ano_cur."'
-   AND SUBSTR(cast(sno_hperiodo.fecdesper as char(10)),1,4) = '".$ano_cur."' 
+    AND sno_hperiodo.anocur = '$ano_cur'
+   AND SUBSTR(cast(sno_hperiodo.fecdesper as char(10)),1,4) = '$ano_cur' 
     AND sno_personalisr.codisr = SUBSTR(cast(sno_hperiodo.fecdesper as char(10)),6,2) 
     AND sno_hconcepto.aplisrcon = 1 
     AND (sno_hsalida.tipsal = 'A' OR sno_hsalida.tipsal = 'V1' OR sno_hsalida.tipsal = 'W1' 
@@ -125,13 +125,13 @@ $sql2 = "SELECT sno_personalisr.codper, sno_personalisr.codisr, sno_personalisr.
 FROM sno_hsalida, sno_personalisr  
 WHERE REPLACE(ltrim(REPLACE(sno_hsalida.codper,'0',' ')),' ','0')='$cedula'
 AND sno_hsalida.codemp = '0001' 
-AND sno_hsalida.anocur = '".$ano_cur."' 
+AND sno_hsalida.anocur = '$ano_cur' 
 AND sno_hsalida.codemp = sno_personalisr.codemp 
 AND sno_hsalida.codper = sno_personalisr.codper 
 GROUP BY sno_hsalida.codper, sno_hsalida.anocur, sno_personalisr.codisr, sno_personalisr.porisr, 
       sno_personalisr.codemp, sno_personalisr.codper 
 ORDER BY sno_personalisr.codisr asc";
-$resultado2 = pg_query($conP2,$sql2);
+$resultado2 = pg_query($conn2020,$sql2);
 while ($row = pg_fetch_array($resultado2)) 
 {
 	$mesletra = $row['codisr'];
@@ -166,4 +166,3 @@ $pdf->Line(10, 260, 200, 260);
 $pdf->MultiCell(0,5,utf8_decode("Dirección: Calle Nueva York, entre calle Madrid y avenida Río de Janeiro, edificio Mundial (Manzanillo), urbanización Las Mercedes."));
 $pdf->Cell(180,5,utf8_decode("Gerencia de Talento Humano Teléfono (0212)991-08-08 Ext:3220"),0,1,'C');
 $pdf->Output('', 'ARC-'.$_SESSION['cedula'].'.pdf');
-?>
