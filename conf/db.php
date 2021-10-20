@@ -13,7 +13,7 @@ if (!$conP) {
 ////////////////////////CONEXION A BASE DE DATOS USUARIOS////////////////////////
 $host2        = "host = 127.0.0.1";
 $port2        = "port = 5432";
-$dbname2      = "dbname = usuarios";
+$dbname2      = "dbname = test";
 $credentials2 = "user = postgres password=123456";
 $conU = pg_connect("$host2 $port2 $dbname2 $credentials2");
 if (!$conU) {

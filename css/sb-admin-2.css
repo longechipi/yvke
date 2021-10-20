@@ -10900,7 +10900,7 @@ span.centrado {
   background: url("../img/logo.png");
   background-position: center;
   background-size: contain;
-  background-repeat: space;
+  background-repeat: no-repeat;
 }
 
 .bg-password-image {

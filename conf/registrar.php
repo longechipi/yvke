@@ -7,9 +7,13 @@ session_start();
 $cedula = pg_escape_string($_POST['cedula1']);
 $cedula2 = pg_escape_string($_POST['cedula2']);
 $email = pg_escape_string($_POST['email']);
+$telf = pg_escape_string($_POST['telf']);
+$telf1 = pg_escape_string($_POST['telf1']);
 
 if (isset($_POST['enviar'])) {
-
+    if ($telf != $telf1) {
+        echo "<script type='text/javascript'> alert('LOS TELEFONOS NO SON IGUALES'); document.location=('../register.php'); </script>";
+    }
     if ($cedula != $cedula2) {
         echo "<script type='text/javascript'> alert('LAS CEDULAS SON DIFERENTES'); document.location=('../register.php'); </script>";
     } else {
@@ -40,7 +44,7 @@ if (isset($_POST['enviar'])) {
             $para = $email;
             $asunto = 'Registro Nuevo Ingreso a la Intranet YVKE';
             mail($para, $asunto, utf8_decode($mensaje));
-            $sql3 = "INSERT into usuariosint (login, clave, correo) values  ('$cedula2','$nuevaPass','$email')";
+            $sql3 = "INSERT into usuariosint (login, clave, correo, telefono) values  ('$cedula2','$nuevaPass','$email','$telf1')";
             $result2 = pg_query($conU, $sql3);
             echo "<script type='text/javascript'> alert('USTED SE REGISTRO CON EXITO!! CLAVE ENVIADA AL CORREO SUMINISTRADO!!'); document.location=('../index.html'); </script>";
         } else {

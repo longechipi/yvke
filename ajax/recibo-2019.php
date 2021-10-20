@@ -12,4 +12,3 @@ $resul = pg_query($conn2020,$sql1);
    echo '<option value="'.htmlspecialchars($row['peri']).'"> Primera Quincena </option>';
 	}           
         }
-?>

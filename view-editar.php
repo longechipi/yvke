@@ -37,6 +37,25 @@ while ($row = pg_fetch_assoc($resul)) {
   });
  });
 </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#chkRead2").change(function() {
+   if ($(this).is(":checked")) {
+    $('#email').removeAttr("readonly")
+
+   } else {
+    $('#email').attr('readonly', true);
+   }
+   if ($(this).is(":checked")) {
+    $('#confirma1').removeAttr("readonly")
+
+   } else {
+    $('#confirma1').attr('readonly', true);
+   }
+
+  });
+ });
+</script>
 
 <body id="page-top">
  <div id="wrapper">
@@ -56,23 +75,30 @@ while ($row = pg_fetch_assoc($resul)) {
        </div>
       </div>
      </div><!-- FIN FILA 1 -->
+
      <div class="row">
-      <!-- BLOQUE 1 -->
+
       <div class="col-xl-12 col-lg-12">
+       <!-- BLOQUE 1 -->
+
        <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
          <h6 class="m-0 font-weight-bold text-primary">Editar Perfil</h6>
         </div>
         <div class="card-body text-center">
          <p class="text-center"> <strong> Hola, <?php nombre(); ?></strong> <br> Por favor selecciona el campo que quieres editar en el sistema </p>
-         <form class="user" method="post" action="ajax/editar-user.php">
-          <input id="chkRead" type="checkbox" class="form-control form-control-user" name="chkRead" /><label for="chkRead">Editar Contraseña</label>
 
-          <div class="row">
-           <div class="col-xl-12 col-lg-12">
+         <div class="row">
+          <!-- COLUMNA PARA ACTUALIZAR LA CLAVE -->
+          <div class="col-sm">
+           <form class="user" method="post" action="ajax/editar-user.php">
 
             <div class="text-justify">
 
+             <div class="form-check">
+              <input id="chkRead" type="checkbox" class="form-check-input" name="chkRead" />
+              <label for="chkRead">Editar Contraseña</label>
+             </div>
              <div class="form-group">
               <label for="exampleInputEmail1">Ingrese Contraseña</label>
               <input id="cedula" type="text" style="display:none;" class="form-control form-control-user" name="cedula" readonly value="<?php echo $login; ?>" />
@@ -86,15 +112,53 @@ while ($row = pg_fetch_assoc($resul)) {
               <small id="emailHelp" class="form-text text-muted">Por favor confirma tu contraseña</small>
              </div>
             </div>
-           </div>
-           <div class="col-xl-6 col-lg-6">
-           </div>
+            <input class="btn btn-primary btn-user btn-block" type="submit" name="enviar" id="enviar" class="fadeIn fourth" value="Actualizar Contraseña">
+           </form>
           </div>
-          <input class="btn btn-primary btn-user btn-block" type="submit" name="enviar" id="enviar" class="fadeIn fourth" value="Registrar">
-         </form>
+          <!-- COLUMNA PARA ACTUALIZAR EL CORREO -->
+          <div class="col-sm">
+           <form class="user" method="post" action="ajax/editar-email.php">
+
+            <div class="text-justify">
+
+             <div class="form-check">
+              <input id="chkRead2" type="checkbox" class="form-check-input" name="chkRead2" />
+              <label for="chkRead2">Editar Correo Electronico</label>
+             </div>
+             <div class="form-group">
+              <label for="exampleInputEmail2">Ingrese Correo Electronico</label>
+              <input id="cedula" type="text" style="display:none;" class="form-control form-control-user" name="cedula" readonly value="<?php echo $login; ?>" />
+              <input name="email" type="text" readonly="readonly" id="email" class="form-control form-control-user" value="<?php echo $email; ?>" />
+              <small id="emailHelp" class="form-text text-muted">Ingresa tu nuevo correo electronico</small>
+             </div>
+             <div class="form-group">
+              <label for="exampleInputEmail1">Confirmar tu Correo Electronico</label>
+              <input id="email" type="text" style="display:none;" class="form-control form-control-user" name="email" readonly value="<?php echo $login; ?>" />
+              <input name="confirma1" type="text" readonly="readonly" id="confirma1" class="form-control form-control-user" />
+              <small id="emailHelp" class="form-text text-muted">Por favor confirma tu correo electronico</small>
+             </div>
+            </div>
+            <input class="btn btn-primary btn-user btn-block" type="submit" name="enviar2" id="enviar2" class="fadeIn fourth" value="Actualizar Correo">
+           </form>
+          </div>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
        </div>
-      </div>
+      </div><!-- FIN COLUMNA -->
 
      </div>
     </div>

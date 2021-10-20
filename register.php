@@ -15,6 +15,8 @@
                                 <h1 class="h4 text-gray-900 mb-4">Crear Cuenta </h1>
                             </div>
                             <form class="user" method="post" action="conf/registrar.php">
+                                <p>Numero de Cedula</p>
+                                <hr>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="number" class="form-control form-control-user" id="cedula1" name="cedula1" placeholder="Ingresa tu Cédula" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" required>
@@ -23,13 +25,26 @@
                                         <input type="number" class="form-control form-control-user" id="cedula2" name="cedula2" placeholder="Confirma tu Cédula" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==8) return false;" required>
                                     </div>
                                 </div>
+                                <p>Correo Electronico</p>
+                                <hr>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Direccion de Correo" required>
+                                </div>
+                                <p>Numero de Contacto</p>
+                                <hr>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user" id="telf" name="telf" placeholder="Ingresa tu Numero de Telefono" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control form-control-user" id="telf1" name="telf1" placeholder="Confirma tu Numero de Telefono" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;" required>
+                                    </div>
                                 </div>
                                 <input class="btn btn-primary btn-user btn-block" type="submit" name="enviar" id="enviar" class="fadeIn fourth" value="Registrar">
                                 <hr>
                             </form>
-                            <hr>
+
                             <div class="text-center">
                                 <a class="medium" href="olvido-pass.php">¿Olvido Contraseña?</a>
                             </div>
